@@ -5,7 +5,6 @@
  * Date: 17/05/2021
  */
 
-
 // Select element and assign them into variables
 let newTask = document.querySelector("#new-task");
 let form = document.querySelector("form");
@@ -27,11 +26,14 @@ let createTask = function (task) {
 
 let addTask = function (event) {
   event.preventDefault();
-  let listItem = createTask(newTask.value);
-  todoUl.appendChild(listItem);
-  newTask.value = "";
-  // bind the new list item to the incomplete task
-  bindInCompleteTask(listItem, completeTask);
+
+  if (newTask.value.length != "") {
+    let listItem = createTask(newTask.value);
+    todoUl.appendChild(listItem);
+    newTask.value = "";
+    // bind the new list item to the incomplete task
+    bindInCompleteTask(listItem, completeTask);
+  }
 };
 
 let completeTask = function () {
